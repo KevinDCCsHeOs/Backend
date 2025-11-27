@@ -8,7 +8,7 @@ import ChatPanel from "./components/ChatPanel.jsx";
 /* Páginas */
 import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
-import Mapa from "./pages/Mapa";
+import Mapa from "./pages/Mapa.jsx";
 import Paseo3D from "./pages/Paseo3D";
 import Dashboard from "./pages/Dashboard";
 import Estudiante from "./pages/Estudiante";

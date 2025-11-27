@@ -1,0 +1,177 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    
+    
+    <style>
+
+    #panel {
+        /* Define este div como el punto 0,0 de referencia */
+        position: relative; 
+        width: 300px; 
+        height: 400px;
+    }
+
+
+    #panel img {
+        /* Esencial: Permite usar TOP, LEFT, etc. */
+        position: absolute; 
+         top: 0px;
+        left: 0px;
+    }
+
+
+
+    </style>
+</head>
+
+<body>
+
+    <a-scene>
+        <a-circle id="campecheHotspot" position="2.45 -0.2 -2.5" radius="0.1" color="blue" opacity="0.5" class="clickable"> </a-circle>
+
+        <a-circle id="chihuahuaHotspot" position="-0.9 2.0 -2.5" radius="0.1" color="blue" opacity="0.5" class="clickable"> </a-circle>
+
+        <a-image src="estados/BajaCalifornia.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/BajaCaliforniaSur.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Sonora.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Chihuahua.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Coahuila.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/NuevoLeon.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Tamaulipas.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Sinaloa.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Durango.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Zacatecas.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/SanLuisPotosi.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Nayarit.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Aguascalientes.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Jalisco.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Guanajuato.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Queretaro.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Hidalgo.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Colima.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Michoacan.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Mexico.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/CDMX.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Morelos.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Tlaxcala.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Puebla.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Veracruz.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Guerrero.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Oaxaca.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Chiapas.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Tabasco.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Campeche.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/Yucatan.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+        <a-image src="estados/QuintanaRoo.PNG" position="0 1.5 -3" width="8" height="8"></a-image>
+
+
+    <!-- POPUP CAMPECHE -->
+    <a-entity id="popupCampeche" visible="false" position="0 0.5 -2">
+        
+        <a-plane width="2.4" height="1.6" color="#611232" opacity="0.95" radius="0.1"></a-plane>
+        <a-plane width="2.4" height="0.1" color="#002f2a" position="0 0.75 0.01"></a-plane>
+        <a-text value="Polo de Desarrollo para el Bienestar" color="#FFFFFF" position="-0.95 0.6 0.02" width="2.1" align="left" wrap-count="30" font="mozillavr" scale="0.9 0.9 0.9"></a-text>
+        <a-text value="Seybaplaya I" color="#FFC72C" position="-0.95 0.45 0.02" width="2.1" align="left" wrap-count="30" font="mozillavr" scale="1.1 1.1 1.1"></a-text>
+        <a-plane width="2.2" height="0.01" color="#FFFFFF" opacity="0.5" position="0 0.35 0.02"></a-plane>
+
+        <a-text value="📍 Ubicacion: Seybaplaya, Campeche
+                        📏 Superficie: 99.98 has
+                        🔗 Conectividad: Carretera MEX-180, Puerto de Seybaplaya, Tren Maya
+                        👥 Población: 387,544
+                        🏭 Vocaciones: Logística, Agroindustria, Manufactura energética"
+        color="#FFFFFF" position="-1 0.0 0.02" width="2" align="left" wrap-count="40" font="mozillavr" scale="0.8 0.8 0.8"></a-text>
+
+        <a-plane width="2.2" height="0.3" color="#a57f2c" position="0 -0.57 0.01"></a-plane>
+        <a-text value="¡INCENTIVO FISCAL!
+                        Deducción inmediata del 100% en activos fijos (2025-2030)"
+        color="#FFFFFF" position="-1 -0.55 0.02" width="2" align="left" wrap-count="45" font="mozillavr" scale="0.85 0.85 0.85"></a-text>
+
+        <a-circle id="closeBtnCircle" position="1.1 0.75 0.06" radius="0.12" color="#611232" class="clickable"></a-circle>
+<a-text value="x" color="#FFFFFF" position="1.1 0.88 0.061" align="center" scale="1 1 1" class="clickable" font="mozillavr"></a-text>
+
+
+        <a-entity id="popupModel" gltf-model="modelos3D/generic_factory_with_smoke_towers.glb" scale="0.04 0.04 0.04" position="0.4 -1.7 0.1"></a-entity>
+    </a-entity>
+
+
+<!-- POPUP CHIHUAHUA -->
+<a-entity id="popupChihuahua" visible="false" position="0 0.5 -2">
+    
+    <a-plane width="2.4" height="1.6" color="#611232" opacity="0.95" radius="0.1"></a-plane>
+    <a-plane width="2.4" height="0.1" color="#002f2a" position="0 0.75 0.01"></a-plane>
+    <a-text value="Polo de Desarrollo para el Bienestar" color="#FFFFFF" position="-0.95 0.6 0.02" width="2.1" align="left" wrap-count="30" font="mozillavr" scale="0.9 0.9 0.9"></a-text>
+    <a-text value="San Jerónimo" color="#FFC72C" position="-0.95 0.45 0.02" width="2.1" align="left" wrap-count="30" font="mozillavr" scale="1.1 1.1 1.1"></a-text>
+    <a-plane width="2.2" height="0.01" color="#FFFFFF" opacity="0.5" position="0 0.35 0.02"></a-plane>
+
+    <a-text value="📍 Ubicación: Ciudad Juárez, Chihuahua
+📏 Superficie: 60.31 has
+🔗 Conectividad: Límite fronterizo con EUA, colindancia con Santa Teresa y Nuevo México, 15 km de la red férrea, 800 m de la zona urbana de Ciudad Juárez, 25.3 km del aeropuerto
+👥 Población: 1,557,415
+🏭 Vocaciones: Logística, Agroindustria, Manufactura ligada a la industria energética, Otras industrias ligeras"
+    color="#FFFFFF" position="-1 0.0 0.02" width="2" align="left" wrap-count="40" font="mozillavr" scale="0.8 0.8 0.8"></a-text>
+
+    <a-plane width="2.2" height="0.3" color="#a57f2c" position="0 -0.57 0.01"></a-plane>
+    <a-text value="¡INCENTIVO FISCAL!
+Deducción inmediata del 100% en activos fijos (2025-2030)"
+    color="#FFFFFF" position="-1 -0.55 0.02" width="2" align="left" wrap-count="45" font="mozillavr" scale="0.85 0.85 0.85"></a-text>
+
+    <!-- Botón cerrar -->
+<a-circle id="closeBtnChihuahua" position="1.1 0.75 0.06" radius="0.12" color="#611232" class="clickable"></a-circle>
+<a-text value="x" color="#FFFFFF" position="1.1 0.88 0.061" align="center" scale="1 1 1" class="clickable" font="mozillavr"></a-text>
+
+
+    <a-entity id="popupModelChihuahua" gltf-model="modelos3D/generic_factory_with_smoke_towers.glb" scale="0.04 0.04 0.04" position="0.4 -1.7 0.1"></a-entity>
+</a-entity>
+
+        
+        
+       <a-entity camera wasd-controls look-controls raycaster="objects: .clickable" cursor="rayOrigin: mouse"></a-entity>
+
+
+    </a-scene>
+
+
+    <script>
+        const campecheHotspot = document.querySelector('#campecheHotspot');
+        const popup = document.querySelector('#popupCampeche');
+        const closeBtn = document.querySelector('#closeBtnCircle');
+
+        // Cuando se hace clic en el hotspot, se muestra el popup
+        campecheHotspot.addEventListener('click', () => {
+            popup.setAttribute('visible', true);
+        });
+
+        // Cuando se hace clic en el botón de cerrar, se oculta el popup
+        closeBtn.addEventListener('click', () => {
+            popup.setAttribute('visible', false);
+        });
+
+
+
+        const chihuahuaHotspot = document.querySelector('#chihuahuaHotspot');
+        const popupChihuahua = document.querySelector('#popupChihuahua');
+        const closeBtnChihuahua = document.querySelector('#closeBtnChihuahua');
+
+        // Mostrar popup al hacer clic en el hotspot
+        chihuahuaHotspot.addEventListener('click', () => {
+            popupChihuahua.setAttribute('visible', true);
+        });
+
+        // Cerrar popup al hacer clic en el botón de cerrar
+        closeBtnChihuahua.addEventListener('click', () => {
+            popupChihuahua.setAttribute('visible', false);
+        });
+
+    </script>
+
+
+
+</body>
+</html>
