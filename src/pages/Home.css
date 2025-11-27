@@ -12,6 +12,20 @@ html, body {
   overflow-x: hidden;
 }
 
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 1rem;
+  aspect-ratio: 9 / 16;
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+
 /* CONTENEDOR GENERAL */
 .home {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
