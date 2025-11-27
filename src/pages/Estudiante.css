@@ -1,9 +1,13 @@
 :root {
   --vino: #5a0037;
   --vino-oscuro: #2e001a;
-  --fondo: #f4f0ed;
+  --fondo: #f6f5f3;
   --blanco: #ffffff;
-  --card-bg: rgba(255, 255, 255, 0.08);
+  --dorado: #f5b443;
+
+  /* estilo elegante */
+  --card-radius: 28px;
+  --card-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 /* CONTENEDOR GENERAL */
@@ -12,113 +16,195 @@
   min-height: 100vh;
   background: var(--fondo);
   padding-bottom: 80px;
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
-/* HERO */
+/* HERO SUPER MODERNO */
 .estu-hero {
-  background: linear-gradient(135deg, var(--vino), var(--vino-oscuro));
+  padding: 80px 7vw;
+  border-radius: 0 0 40px 40px;
+  background: linear-gradient(
+    135deg,
+    #3b041a 0%,
+    #7a0045 45%,
+    #b3005d 100%
+  );
   color: white;
-  padding: 60px 7vw;
-  border-radius: 0 0 32px 32px;
+  text-align: center;
 }
+
 
 .estu-hero h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
+  font-size: 46px;
+  font-weight: 700;
+  margin-bottom: 12px;
 }
 
 .estu-hero p {
-  opacity: 0.9;
+  font-size: 20px;
+  opacity: 0.95;
+  max-width: 700px;
+  margin: auto;
 }
 
-/* BANNER ESTUDIANTE EMBAJADOR */
+/* BANNER ESTUDIANTE EMBAJADOR – TARJETA TIPO PREMIUM */
 .estu-banner {
   margin: 40px auto;
-  padding: 28px;
-  width: 85%;
-  background: var(--vino);
-  color: white;
-  border-radius: 24px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  padding: 32px;
+  width: 90%;
+  background: white;
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  text-align: center;
+}
+
+.estu-banner h2 {
+  font-size: 26px;
+  margin-bottom: 12px;
+  color: var(--vino);
+  font-weight: 700;
+}
+
+.estu-banner p {
+  font-size: 17px;
+  opacity: 0.8;
 }
 
 .banner-btn {
-  margin-top: 14px;
-  padding: 10px 20px;
+  margin-top: 16px;
+  padding: 12px 24px;
   border-radius: 14px;
   border: none;
-  background: #f5b443;
-  color: #3b0020;
-  font-weight: 600;
+  background: var(--dorado);
+  color: var(--vino-oscuro);
+  font-weight: 700;
   cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s ease;
 }
 
 .banner-btn:hover {
-  filter: brightness(0.95);
+  filter: brightness(0.92);
 }
 
-/* FORMULARIO */
+/* FORMULARIO – ESTILO GLASS + TARJETA ELEVADA */
 .estu-form {
-  width: 85%;
+  width: 90%;
   margin: auto;
   background: white;
-  color:#2e001a;
-  padding: 32px;
-  border-radius: 24px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  padding: 40px;
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
 }
 
 .estu-form h2 {
-  margin-bottom: 20px;
+  font-size: 28px;
+  color: var(--vino);
+  margin-bottom: 25px;
 }
 
 .estu-form label {
   font-weight: 600;
-  margin-top: 15px;
+  font-size: 15px;
+  margin-top: 18px;
   display: block;
 }
 
 .estu-form select {
   width: 100%;
-  padding: 12px;
-  
-  border: 1px solid #ccc;
-  margin-top: 8px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  margin-top: 6px;
+  font-size: 15px;
+  transition: border 0.2s ease;
+}
+
+.estu-form select:focus {
+  border-color: var(--vino);
+  outline: none;
 }
 
 .enviar-btn {
-  margin-top: 20px;
-  padding: 12px 18px;
+  margin-top: 30px;
+  padding: 14px 22px;
   background: var(--vino);
   color: white;
   border-radius: 14px;
   border: none;
   cursor: pointer;
+  font-size: 17px;
 }
 
 .enviar-btn:hover {
   filter: brightness(1.1);
 }
 
-/* RESULTADOS */
+/* RESULTADOS – TARJETAS MODERNAS */
 .estu-resultados {
-  width: 85%;
-  margin: 40px auto;
-  color:#5a0037;
+  width: 90%;
+  margin: 50px auto;
+}
+
+.estu-resultados h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: var(--vino-oscuro);
 }
 
 .estu-resultados h2 span {
   color: var(--vino);
+  font-weight: 700;
 }
 
 .result-card {
   background: white;
-  padding: 24px;
-  margin-top: 25px;
-  border-radius: 20px;
-  box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+  padding: 32px;
+  margin-top: 28px;
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
 }
 
 .result-card h3 {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--vino-oscuro);
 }
+
+.result-card ul li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .estu-hero h1 {
+    font-size: 36px;
+  }
+
+  .estu-banner,
+  .estu-form,
+  .estu-resultados {
+    width: 94%;
+  }
+
+  .result-card {
+    padding: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .estu-hero h1 {
+    font-size: 30px;
+  }
+
+  .estu-hero p {
+    font-size: 16px;
+  }
+
+  .estu-form {
+    padding: 26px;
+  }
+}
+

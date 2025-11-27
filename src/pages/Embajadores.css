@@ -1,0 +1,102 @@
+.embajadores-section {
+  width: 100vw;
+  padding: 60px 7vw;
+  background: #f4f4f4;
+}
+
+.embajadores-header h1 {
+  color: #6b002e;
+  font-size: 36px;
+  margin-bottom: 5px;
+}
+
+.embajadores-header p {
+  color: #3b001a;
+  font-size: 18px;
+  opacity: 0.85;
+  margin-bottom: 40px;
+}
+
+/* Contenido: bloques + diagrama */
+.embajadores-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.embajadores-info, .embajadores-beneficios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  flex: 1 1 60%;
+}
+
+/* Diagrama */
+.embajadores-diagrama {
+  flex: 1 1 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.embajadores-diagrama img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+/* Tarjetas */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+  border: 3px solid #B38E5D;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+
+.card h3 {
+  color: #80142D;
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.card p, .card li {
+  color: #333;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.card ul {
+  padding-left: 18px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .embajadores-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .embajadores-diagrama {
+    order: -1;
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .embajadores-header h1 {
+    font-size: 28px;
+  }
+
+  .embajadores-header p {
+    font-size: 16px;
+  }
+}

@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { getCurrentUser } from "../auth/authService";
+import { useNavigate } from "react-router-dom";
+
 
 export default function Home() {
 
   const user = getCurrentUser();
+    const navigate = useNavigate(); 
 
   // ---------------- ESTADOS ----------------
   const [noticiaActiva, setNoticiaActiva] = useState(null);
@@ -17,7 +20,7 @@ export default function Home() {
       tag: "Energía",
       titulo: "Impulsan energías limpias en el norte",
       fecha: "10 abril 2025",
-      imagenClase: "news-image-1",
+       imagen: "/energia.jpg",
       preguntaInicial:
         "México ya produce más del 50% de su energía con fuentes renovables. ¿Verdadero o falso?",
       respuestaInicialCorrecta: "Falso",
@@ -32,7 +35,7 @@ export default function Home() {
       tag: "Empleo",
       titulo: "Fomentan nuevas empresas locales",
       fecha: "12 abril 2025",
-      imagenClase: "news-image-2",
+       imagen: "/empresas.jpg",
       preguntaInicial:
         "El Plan México contempla apoyos directos para emprendedores locales. ¿Verdadero o falso?",
       respuestaInicialCorrecta: "Verdadero",
@@ -47,7 +50,7 @@ export default function Home() {
       tag: "Bienestar",
       titulo: "Acciones estratégicas en salud y educación",
       fecha: "15 abril 2025",
-      imagenClase: "news-image-3",
+       imagen: "/salud.jpg",
       preguntaInicial:
         "La nueva estrategia nacional incluye clínicas y escuelas completamente equipadas. ¿Verdadero o falso?",
       respuestaInicialCorrecta: "Verdadero",
@@ -108,7 +111,12 @@ export default function Home() {
 
   {/* Parte izquierda (sello + texto GOV MX) */}
   <div className="home-header-left">
-    <span className="home-header-seal" />
+    <img
+  src="/escudo.png"
+  alt="Escudo Gobierno de México"
+  className="home-header-seal"
+/>
+
     <div className="home-header-text">
       <span className="home-header-gob">Gobierno de</span>
       <span className="home-header-mx">México</span>
@@ -242,7 +250,12 @@ export default function Home() {
             Consulta los proyectos clave cerca de tu estado o municipio:
             empleos, inversiones, infraestructura y sectores en crecimiento.
           </p>
-          <button className="link-btn">Explorar oportunidades</button>
+           <button 
+        className="link-btn"
+        onClick={() => navigate("/exploraturegion")}
+      >
+        Explorar oportunidades
+      </button>
         </article>
 
         <article className="info-card">
@@ -269,7 +282,13 @@ export default function Home() {
         onClick={() => abrirNoticia(n)}
         style={{ cursor: "pointer" }}
       >
-        <div className={`news-image ${n.imagenClase}`} />
+        <div
+  className="news-image"
+  style={{
+    backgroundImage: `url(${n.imagen})`
+  }}
+/>
+
         <div className="news-content">
           <span className="news-tag">{n.tag}</span>
           <h3>{n.titulo}</h3>

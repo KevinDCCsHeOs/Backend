@@ -1,48 +1,23 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { login } from "../auth/authService";
 import "./Login.css";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
+  const [username, setUser] = useState("");
   const [password, setPass] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  
-  const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError("");
 
-    try {
-      const response = await fetch('/api/perfiles/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email: email,
-          contrasenia: password
-        })
-      });
+    const user = login(username, password);
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Error al iniciar sesión");
-      }
-
-      console.log("Usuario logueado:", data.user);
-      
-      navigate("/"); 
-
-    } catch (err) {
-      console.error("Login fallido:", err);
-      setError(err.message);
-    } finally {
-      setLoading(false);
+    if (!user) {
+      setError("Usuario o contraseña incorrectos");
+      return;
     }
+
+    window.location.href = "/"; // Redirección local
   };
 
   return (
@@ -51,10 +26,10 @@ export default function Login() {
         <h2>Iniciar Sesión</h2>
 
         <input
-          type="email"
-          placeholder="Correo electrónico"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          type="text"
+          placeholder="Usuario"
+          value={username}
+          onChange={(e) => setUser(e.target.value)}
           required
         />
 
@@ -68,9 +43,7 @@ export default function Login() {
 
         {error && <p className="error">{error}</p>}
 
-        <button type="submit" disabled={loading}>
-          {loading ? "Verificando..." : "Entrar"}
-        </button>
+        <button type="submit">Entrar</button>
       </form>
     </div>
   );

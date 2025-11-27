@@ -14,7 +14,7 @@ import Dashboard from "./pages/Dashboard";
 import Estudiante from "./pages/Estudiante";
 import Nahuatl from "./pages/Nahuatl";
 import Audio from "./pages/Audio";
-
+import Embajadores from "./pages/Embajadores";
 
 
 /* Sidebar */
@@ -53,11 +53,10 @@ function App() {
           <PrivateRoute><Paseo3D /></PrivateRoute>
         }/>
 
-        <Route path="/dashboard" element={
-          <PrivateRoute><Dashboard /></PrivateRoute>
-        }/>
+        <Route path="/dashboard" element={<Dashboard />}/>
 
         <Route path="/estudiante" element={<Estudiante />} />
+        <Route path="/embajadores" element={<Embajadores />} />
 
 
         <Route path="/nahuatl" element={<Nahuatl />} />
