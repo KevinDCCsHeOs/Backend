@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { getCurrentUser } from "../auth/authService";
 
 export default function Home() {
+
+  const user = getCurrentUser();
 
   // ---------------- ESTADOS ----------------
   const [noticiaActiva, setNoticiaActiva] = useState(null);
@@ -113,34 +116,57 @@ export default function Home() {
   </div>
 
   {/* Parte derecha (login + search) */}
-  <nav className="home-header-right">
-    
+ <nav className="home-header-right">
+
+  {user ? (
+  <>
+    <div className="user-badge">
+      <span className="user-name">Hola, {user.name}</span>
+      <span className="user-points">⭐ {user.points}</span>
+    </div>
+
     <button
-      className="home-login-btn"
-      onClick={() => (window.location.href = "/login")}
+      className="logout-btn"
+      onClick={() => {
+        localStorage.removeItem("user");
+        window.location.href = "/"; // vuelve al home
+      }}
     >
-      Iniciar sesión
+      Cerrar sesión
     </button>
-
-    <button
-  className="home-login-btn"
-  onClick={() => (window.location.href = "/nahuatl")}
-       >
-  Náhuatl
-</button>
-
- <button
-  className="home-login-btn"
-  onClick={() => (window.location.href = "/audio")}
-       >
-  Audio
-</button>
+  </>
+) : (
+  <button
+    className="home-login-btn"
+    onClick={() => (window.location.href = "/login")}
+  >
+    Iniciar sesión
+  </button>
+)}
 
 
-    <button className="home-icon-btn" aria-label="Buscar">
-      🔍
-    </button>
-  </nav>
+  
+
+
+  <button
+    className="home-login-btn"
+    onClick={() => (window.location.href = "/nahuatl")}
+  >
+    Náhuatl
+  </button>
+
+  <button
+    className="home-login-btn"
+    onClick={() => (window.location.href = "/audio")}
+  >
+    Audio
+  </button>
+
+  <button className="home-icon-btn" aria-label="Buscar">
+    🔍
+  </button>
+
+</nav>
 
 </header>
 
@@ -166,7 +192,7 @@ export default function Home() {
               className="hero-cta"
               onClick={() => (window.location.href = "/mapa")}
             >
-              Explorar polos de desarrollo
+              Explora mapa 3D de polos de desarrollo
             </button>
 
             

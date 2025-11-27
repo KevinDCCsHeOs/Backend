@@ -1,0 +1,53 @@
+#aframe-root {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.mapa-scene-wrapper {
+  width: 100%;
+  height: 550px;
+  border: 2px dashed #b57f5a;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #ffffff;
+  position: relative;
+}
+
+
+.mapa-container {
+  padding: 60px 20px;
+  text-align: center;
+  color: #333;
+}
+
+.mapa-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #4a001c;
+}
+
+.mapa-description {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: #5a0030;
+}
+
+.mapa-placeholder {
+  background: #f8f2eb;
+  border: 2px dashed #b77f63;
+  padding: 60px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  color: #6a3f2f;
+}
+.mapa-scene-wrapper {
+  width: 100%;
+  height: 600px;
+  border: 2px dashed #b57f5a;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+}

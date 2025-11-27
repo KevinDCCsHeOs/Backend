@@ -25,6 +25,9 @@ export const createPerfil = async (req, res) => {
           temas_interes: datos.temas_interes,
           embajador_nivel: datos.nivel_embajador,
           puntos_recompensa: datos.puntos_recompensa || 0,
+          email: datos.email,
+          telefono: datos.telefono,
+          contrasenia: datos.contrasenia,
         },
       ])
       .select();
@@ -75,6 +78,36 @@ export const getPerfilById = async (req, res) => {
     res.status(200).json(data);
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+};
+
+// Iniciar sesión
+export const loginPerfil = async (req, res) => {
+  try {
+    const { email, contrasenia } = req.body;
+
+    const { data, error } = await supabase
+      .from(TABLE_NAME)
+      .select('*')
+      .eq('email', email)
+      .single();
+
+    if (error && error.code !== 'PGRST116') {
+      throw error;
+    }
+
+    if (!data || data.contrasenia !== contrasenia) {
+      return res.status(401).json({ error: 'Credenciales incorrectas' });
+    }
+
+    res.status(200).json({ 
+      message: 'Login exitoso', 
+      user: data 
+    });
+
+  } catch (error) {
+    console.error("Error en login:", error);
+    res.status(500).json({ error: 'Error interno del servidor' });
   }
 };
 

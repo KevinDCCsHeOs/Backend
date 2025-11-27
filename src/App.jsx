@@ -2,18 +2,19 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";   // ← Agregamos useState
 import { supabase } from "./supabaseClient";
 
-import PrivateRoute from "./routes/PrivateRoute";
-import AsistenteFlotante from "./components/AsistenteFlotante";
-import ChatPanel from "./components/ChatPanel";
+import PrivateRoute from "./routes/PrivateRoute.jsx";
+import AsistenteFlotante from "./components/AsistenteFlotante.jsx";
+import ChatPanel from "./components/ChatPanel.jsx";
 /* Páginas */
-import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Home from "./pages/Home.jsx";
+import Login from "./pages/Login.jsx";
 import Mapa from "./pages/Mapa";
 import Paseo3D from "./pages/Paseo3D";
 import Dashboard from "./pages/Dashboard";
 import Estudiante from "./pages/Estudiante";
 import Nahuatl from "./pages/Nahuatl";
 import Audio from "./pages/Audio";
+
 
 
 /* Sidebar */
@@ -46,9 +47,7 @@ function App() {
         <Route path="/login" element={<Login />} />
 
         {/* PRIVADAS */}
-        <Route path="/mapa" element={
-          <PrivateRoute><Mapa /></PrivateRoute>
-        }/>
+        
 
         <Route path="/paseo" element={
           <PrivateRoute><Paseo3D /></PrivateRoute>
@@ -64,6 +63,8 @@ function App() {
         <Route path="/nahuatl" element={<Nahuatl />} />
 
          <Route path="/audio" element={<Audio />} />
+
+         <Route path="/mapa" element={<Mapa />} />
       </Routes>
 
      

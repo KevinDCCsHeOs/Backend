@@ -26,6 +26,7 @@ export const createNoticiaDifusion = async (req, res) => {
           etiquetas: datos.etiquetas || null,      // puedes mandar string o tags separados por comas
           publicada_en: datos.publicada_en || null, // date/timestamp
           es_emergente: datos.es_emergente ?? false, // bool
+          subtitulo: datos.subtitulo || null,
         },
       ])
       .select();

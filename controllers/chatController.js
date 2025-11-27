@@ -1,8 +1,15 @@
 import OpenAI from 'openai';
-import supabase from '../supabaseClient.js';
+import { createClient } from '@supabase/supabase-js'; // Importamos createClient directamente
 import dotenv from 'dotenv';
 
 dotenv.config();
+
+// 1. CONFIGURACIÓN DEL CLIENTE ADMIN (SUPERPODERES) 🦸‍♂️
+// Esto es CRUCIAL. Usamos la SERVICE_KEY para poder leer los vectores sin restricciones de seguridad.
+const supabaseAdmin = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_KEY 
+);
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY, 
@@ -10,26 +17,25 @@ const openai = new OpenAI({
 
 export const chatWithPlanMexico = async (req, res) => {
   try {
-    // 1. Recibimos la pregunta del usuario Y el ID del perfil
     const { pregunta, perfil_id } = req.body;
 
     if (!pregunta) {
       return res.status(400).json({ error: 'Por favor envía una pregunta.' });
     }
 
-    // 2. Generamos el "Embedding" de la pregunta
+    // 2. Generar Embedding de la pregunta
     const embeddingResponse = await openai.embeddings.create({
-      model: 'text-embedding-3-small', // Debe coincidir con el que usaste para guardar los datos
+      model: 'text-embedding-3-small',
       input: pregunta,
     });
     
     const vectorPregunta = embeddingResponse.data[0].embedding;
 
-    // 3. Buscamos en Supabase usando la función RPC que creamos
-    const { data: documentos, error } = await supabase.rpc('match_documents', {
+    // 3. Buscar en Supabase usando el CLIENTE ADMIN
+    const { data: documentos, error } = await supabaseAdmin.rpc('match_documents', {
       query_embedding: vectorPregunta,
-      match_threshold: 0.5, // Similitud mínima (ajustable)
-      match_count: 5,       // Cuántos fragmentos de texto recuperar
+      match_threshold: 0.3, // 👇 HE BAJADO ESTO DE 0.5 A 0.3 PARA ENCONTRAR MÁS COSAS
+      match_count: 5,
     });
 
     if (error) {
@@ -37,55 +43,78 @@ export const chatWithPlanMexico = async (req, res) => {
       throw error;
     }
 
-    // 4. Preparamos el contexto
-    const contexto = documentos.map(doc => doc.contenido).join('\n---\n');
+    // Diagnóstico: Ver en consola si encontró algo
+    console.log(`🔎 Se encontraron ${documentos?.length || 0} fragmentos relevantes.`);
 
-    // 5. Enviamos todo a ChatGPT
+    // 4. Preparar contexto
+    // Si no hay documentos, el contexto estará vacío, pero el código sigue.
+    const contexto = documentos?.map(doc => doc.content).join('\n---\n') || "";
+
+    // 5. Preguntar a ChatGPT
     const chatResponse = await openai.chat.completions.create({
-      model: 'gpt-4o', // O 'gpt-3.5-turbo' si prefieres ahorrar
+      model: 'gpt-3.5',
       messages: [
         {
           role: 'system',
-          content: `Eres un asistente virtual oficial del "Plan Mexico".
+          content: `Eres el asistente virtual oficial del "Plan México".
 
-            Tu objetivo es responder preguntas ciudadanas basandote PRINCIPALMENTE en el siguiente contexto.
+          Tu objetivo es responder preguntas ciudadanas basándote PRINCIPALMENTE en el siguiente contexto.
 
-            Si la respuesta no esta en el contexto, responde amablemente que no tienes informacion, pero con el objetivo de ayudar, genera una respuesta basandote en los conocimientos generales que tienes
-          
-            Contexto del Plan México:
+          Si la respuesta no está en el contexto, responde amablemente que no tienes información específica dentro del Plan México, pero ofrece orientación general aclarando explícitamente que dicha información NO es oficial.
+
+          — ESTILO Y EXTENSIÓN:
+          Responde de forma clara, breve y concisa por defecto.
+          Solo extiende la respuesta si el contexto o la complejidad de la pregunta lo requieren.
+          Evita párrafos innecesariamente largos y mantén un lenguaje sencillo y directo.
+
+          — TONO:
+          Profesional, cálido, amigable y ciudadano.
+          Evita tecnicismos a menos que sean necesarios.
+
+          — INTERACCIÓN FINAL (obligatoria):
+          Después de contestar la pregunta del usuario, finaliza SIEMPRE con una pregunta corta para generar interacción y personalización.
+          Puedes elegir entre preguntas como:
+          • “¿A qué te dedicas actualmente?”
+          • “¿En qué estado de México te encuentras?”
+          • “¿Qué parte del Plan México te gustaría conocer mejor?”
+          • “¿Hay algo de tu vida diaria donde crees que el Plan México podría ayudarte?”
+
+          El objetivo es:
+          1. Conectar con el ciudadano.
+          2. Comprender su situación personal.
+          3. Explicar cómo el Plan México puede relacionarse con él.
+          4. Mantener la conversación activa.
+
+          — CONTEXTO OFICIAL DEL PLAN MÉXICO:
           ${contexto}`
         },
-        { role: 'user', content: pregunta }
+        { role: "user", content: pregunta }
       ],
-      temperature: 0.3, // Bajo para que sea más preciso y menos creativo
+      temperature: 0.3,
     });
+
+
 
     const respuestaIA = chatResponse.choices[0].message.content;
 
-    // 6. GUARDAR EN EL HISTORIAL (Nuevo paso agregado)
-    // Solo intentamos guardar si tenemos un perfil_id
+    // 6. Guardar en historial (Usando también el cliente Admin para asegurar permisos)
     if (perfil_id) {
-      const { error: errorGuardado } = await supabase
+      const { error: errorGuardado } = await supabaseAdmin
         .from('Chat_historial')
         .insert([
           {
             perfil_id: perfil_id,
             mensaje_usuario: pregunta,
             respuesta_ia: respuestaIA
-            // El campo 'feedback' es opcional o false por defecto en la BD
           }
         ]);
 
-      if (errorGuardado) {
-        console.error('Error al guardar el historial:', errorGuardado);
-        // No detenemos la respuesta al usuario, solo avisamos en consola
-      }
+      if (errorGuardado) console.error('Error al guardar historial:', errorGuardado);
     }
 
-    // 7. Enviamos la respuesta al frontend
     res.status(200).json({ 
       respuesta: respuestaIA,
-      fuentes: documentos 
+      fuentes: documentos // Ahora deberías ver contenido aquí
     });
 
   } catch (error) {
