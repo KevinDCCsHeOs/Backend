@@ -1,0 +1,130 @@
+.chat-panel { 
+  position: fixed;
+  right: 20px;
+  bottom: -600px;
+  width: 360px;
+  height: 500px;
+
+  /* 🔥 Fondo translúcido oscuro */
+  background: rgba(25, 0, 20, 0.65);
+  backdrop-filter: blur(12px);
+
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -4px 30px rgba(0,0,0,0.35);
+
+  display: flex;
+  flex-direction: column;
+
+  transition: bottom 0.35s ease;
+  z-index: 9999;
+}
+
+.chat-panel.open {
+  bottom: 20px;
+}
+
+/* ---------------------- */
+/* HEADER (se queda igual) */
+/* ---------------------- */
+
+.chat-header {
+  background: #5a0037;
+  color: white;
+  padding: 14px;
+  border-radius: 20px 20px 0 0;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+
+.close-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* ---------------------- */
+/* MENSAJES AJUSTADOS     */
+/* ---------------------- */
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Mensaje usuario */
+.msg.user {
+  align-self: flex-end;
+  background: #d9c6ff; /* Lila visible */
+  color: #2d0049;
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 85%;
+}
+
+/* Mensaje asistente */
+.msg.assistant {
+  align-self: flex-start;
+  
+  /* 🔥 Burbuja translúcida clara */
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
+  backdrop-filter: blur(6px);
+
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 85%;
+}
+
+/* ---------------------- */
+/* INPUT AJUSTADO         */
+/* ---------------------- */
+
+.chat-input-area {
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+
+  border-top: 1px solid rgba(255,255,255,0.25);
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(8px);
+}
+
+.chat-input-area input {
+  flex: 1;
+  padding: 10px;
+
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 12px;
+  color: white;
+
+  backdrop-filter: blur(4px);
+}
+
+.chat-input-area input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+.chat-input-area button {
+  padding: 10px 14px;
+  background: #5a0037;
+  color: white;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}

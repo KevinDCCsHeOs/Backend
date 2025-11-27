@@ -1,0 +1,59 @@
+.asistente-flotante {
+  position: fixed;
+  right: 30px;
+  bottom: 40px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  background: rgba(255, 255, 255, 0.85);
+  padding: 16px 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 9999; /* siempre visible */
+}
+
+.asistente-flotante:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.asistente-icono img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.asistente-texto {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.titulo {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0;
+  color: #5a0037;
+}
+
+.subtitulo {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  color: #5a0037;
+}
+
+.asistente-flecha {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #5a0037;
+  margin-left: 6px;
+}

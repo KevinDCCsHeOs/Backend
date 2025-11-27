@@ -1,0 +1,133 @@
+import { useState } from "react";
+import "./Estudiante.css";
+
+export default function Estudiante() {
+  const [grado, setGrado] = useState("");
+  const [carrera, setCarrera] = useState("");
+  const [mostrarResultados, setMostrarResultados] = useState(false);
+
+  const manejarEnvio = () => {
+    if (!grado || !carrera) {
+      alert("Por favor completa ambas preguntas.");
+      return;
+    }
+    setMostrarResultados(true);
+  };
+
+  return (
+
+    
+    <div className="estu-page">
+      
+      {/* HERO SUPERIOR */}
+      <section className="estu-hero">
+        <h1>Estudiantes & Plan México</h1>
+        <p>Explora cómo tu formación puede contribuir directamente al desarrollo del país.</p>
+      </section>
+
+      {/* BANNER ESTUDIANTE EMBAJADOR */}
+      <section className="estu-banner">
+        <div className="estu-banner-content">
+          <h2>Programa Estudiante Embajador 🇲🇽</h2>
+          <p>
+            Únete a la iniciativa nacional para difundir el Plan México dentro de tu escuela 
+            y tu comunidad.
+          </p>
+          <button className="banner-btn">Conocer programa</button>
+        </div>
+      </section>
+
+      {/* FORMULARIO */}
+      <section className="estu-form">
+        <h2>Cuéntanos sobre ti</h2>
+
+        <label>Grado de estudios</label>
+        <select 
+          value={grado}
+          onChange={(e) => setGrado(e.target.value)}
+        >
+          <option value="">Selecciona tu grado</option>
+          <option>Licenciatura</option>
+          <option>Maestría</option>
+          <option>Doctorado</option>
+          <option>Técnico Superior</option>
+          <option>Secundaria / Preparatoria</option>
+        </select>
+
+        <label>Área o carrera</label>
+        <select 
+          value={carrera}
+          onChange={(e) => setCarrera(e.target.value)}
+        >
+          <option value="">Selecciona tu área</option>
+          <option>Ingeniería en Sistemas</option>
+          <option>Ingeniería Industrial</option>
+          <option>Ingeniería Civil</option>
+          <option>Ingeniería Electrónica</option>
+          <option>Administración</option>
+          <option>Economía</option>
+          <option>Arquitectura</option>
+          <option>Agronomía</option>
+          <option>Ciencias Ambientales</option>
+          <option>Salud</option>
+          <option>Educación</option>
+          <option>Derecho</option>
+          <option>Trabajo Social</option>
+        </select>
+
+        <button className="enviar-btn" onClick={manejarEnvio}>
+          Obtener recomendaciones
+        </button>
+      </section>
+
+      {/* RESULTADOS */}
+      {mostrarResultados && (
+        <section className="estu-resultados">
+          <h2>Resultados personalizados para: <span>{carrera}</span></h2>
+
+          {/* QUÉ HACE EL PLAN MÉXICO EN ESTA ÁREA */}
+          <div className="result-card">
+            <h3>¿Qué hace el Plan México en tu área?</h3>
+            <p>
+              El Plan México impulsa proyectos estratégicos que benefician directamente 
+              al área de <strong>{carrera}</strong>, promoviendo infraestructura, 
+              innovación, inversión regional y desarrollo social alineado a los polos de bienestar.
+            </p>
+          </div>
+
+          {/* TEMAS DE INVESTIGACIÓN */}
+          <div className="result-card">
+            <h3>Temas sugeridos de investigación</h3>
+            <ul>
+              <li>Aplicación del conocimiento para resolver retos regionales del Plan México.</li>
+              <li>Innovación y tecnología para impulsar el desarrollo local.</li>
+              <li>Soluciones sostenibles alineadas a los polos de prosperidad.</li>
+              <li>Propuestas de mejora en infraestructura, educación o procesos productivos.</li>
+            </ul>
+          </div>
+
+          {/* IMPORTANCIA DEL CONOCIMIENTO */}
+          <div className="result-card">
+            <h3>¿Por qué es importante tu área para México?</h3>
+            <p>
+              La formación en <strong>{carrera}</strong> es clave para atender necesidades 
+              nacionales y fortalecer la soberanía, productividad y bienestar. Generar 
+              conocimiento alineado al Plan México ayuda a transformar el país.
+            </p>
+          </div>
+
+          {/* APOYOS A ESTUDIANTES */}
+          <div className="result-card">
+            <h3>Apoyos del Gobierno</h3>
+            <ul>
+              <li>Becas Benito Juárez</li>
+              <li>Apoyos de investigación CONAHCYT</li>
+              <li>Programas de movilidad académica</li>
+              <li>Estancias en polos de desarrollo regional</li>
+            </ul>
+          </div>
+        </section>
+      )}
+    </div>
+  );
+}

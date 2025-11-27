@@ -1,0 +1,746 @@
+:root {
+  --vino: #6b002e;
+  --vino-oscuro: #3b001a;
+  --dorado: #f5b443;
+  --fondo: #f5f2f0;
+  --texto: #222222;
+}
+
+/* CONTENEDOR GENERAL */
+.home {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* HEADER */
+.home-header {
+  width: 100%;
+  padding: 16px 7vw;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--vino);
+  color: #fff;
+}
+
+.home-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.home-header-seal {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #f3e0c7;
+}
+
+.home-header-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.home-header-gob {
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.home-header-mx {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.home-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.home-login-btn {
+  background: transparent;
+  border-radius: 999px;
+  padding: 6px 14px;
+  border: 1px solid #fbe8d6;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.home-login-btn:hover {
+  background: #fbe8d6;
+  color: var(--vino);
+}
+
+.home-icon-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Botón hamburguesa integrado */
+.home-hamburger-btn {
+  font-size: 1.6rem;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 12px;
+  padding: 6px 12px;
+  color: white;
+  cursor: pointer;
+  margin-right: 18px;  /* separarlo del sello */
+}
+
+/* Asegura que el header quede alineado correctamente */
+.home-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+
+/* HERO */
+.hero {
+  width: 100%;
+  min-height: 60vh;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 32px;
+
+  padding: 48px clamp(20px, 6vw, 80px);
+  
+  background: radial-gradient(circle at 20% 0%, #a32a50 0, var(--vino-oscuro) 70%);
+  border-radius: 32px;     /* << BORDES REDONDEADOS */
+
+  overflow: hidden;         /* evita desbordes visuales */
+
+  color: #fff;
+  position: relative;
+}
+
+.hero-figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-figure img {
+  width: 100%;
+  max-width: 320px;         /* tamaño máximo recomendado */
+ 
+  height: auto;             /* mantiene proporciones */
+  object-fit: contain;      /* evita estiramiento */
+  border-radius: 12px;      /* OPCIONAL: si quieres borde redondeado */
+}
+
+.hero-logos {
+  display: flex;
+  flex-direction: column;       /* uno debajo del otro */
+  align-items: flex-start;      /* alineados a la izquierda */
+  gap: 10px;                    /* separación ideal */
+  margin-bottom: 25px;
+}
+
+/* Logo ConoceMex */
+.logo-conoce {
+  width: 250px;                 /* Ajústalo a gusto */
+  height: auto;
+  object-fit: contain;
+}
+
+/* Logo Plan México */
+.logo-plan {
+  width: 330px;                 /* más grande que ConoceMex */
+  height: auto;
+  object-fit: contain;
+}
+
+
+.hero-wrapper {
+  padding: 24px;      /* margen claro alrededor */
+  background: #f5f2f0; /* color claro institucional */
+}
+
+
+.hero-left {
+  max-width: 640px;
+}
+
+.hero-logo {
+  display: inline-block;
+  background: #fff;
+  color: var(--vino-oscuro);
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-size: 32px;
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+
+.hero-subtitle {
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-cta {
+  border: none;
+  background: var(--dorado);
+  color: #3b0020;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hero-cta:hover {
+  filter: brightness(0.95);
+}
+
+.hero-assistant {
+  border: none;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.hero-right {
+    flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;    /* coloca la imagen pegada abajo */
+  height: 100%;
+  overflow: hidden; 
+}
+
+.hero-woman {
+  height: 100%;             /* ocupa toda la altura */
+  max-height: 100%;
+  object-fit: contain;      /* mantiene proporción */
+  display: block;
+}
+
+
+
+
+.profile-strip {
+  width: 100%;
+  padding: 30px 40px 60px 40px; /* igual que el hero */
+  background: linear-gradient(180deg, #f2ebe6 0%, #f6f4f3 100%);
+  display: flex;
+  justify-content: center;
+}
+
+
+.profile-left {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-label {
+  font-weight: 600;
+}
+
+.profile-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  padding: 6px 14px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.chip-active {
+  background: var(--vino);
+  color: #fff;
+  border-color: var(--vino);
+}
+
+/* TARJETAS INFO */
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  padding: 32px 7vw;
+}
+
+
+
+.info-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+}
+
+.info-card h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.info-card p {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.link-btn {
+  border: none;
+  background: none;
+  color: var(--vino);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* NOTICIAS */
+.news-section {
+   padding: 32px 7vw;
+}
+
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.news-card {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+}
+
+.news-image {
+  height: 120px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* De momento solo degradados de ejemplo */
+.news-image-1 {
+  background-image: linear-gradient(120deg, #f7b733, #fc4a1a);
+}
+.news-image-2 {
+  background-image: linear-gradient(120deg, #36d1dc, #5b86e5);
+}
+.news-image-3 {
+  background-image: linear-gradient(120deg, #11998e, #38ef7d);
+}
+
+.news-content {
+  padding: 10px 14px 14px;
+}
+
+.news-tag {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #666;
+}
+
+.news-content h3 {
+  font-size: 15px;
+  margin: 4px 0;
+}
+
+.news-meta {
+  font-size: 12px;
+  color: #777;
+}
+
+/* FOOTER */
+.home-footer {
+  margin-top: 16px;
+  width: 100%;
+  padding: 16px 7vw;
+  background: var(--vino-oscuro);
+  color: #f3e0d0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  
+}
+
+.footer-links {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-links a {
+  color: #f3e0d0;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .hero-right {
+    justify-content: flex-start;
+  }
+}
+
+.hero,
+.home-header,
+.profile-strip,
+.info-cards,
+.news-section,
+.home-footer {
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+/* Contenedor general */
+.rol-container {
+  margin-top: 40px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* Título */
+.rol-titulo {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #3a0030; /* vino del diseño */
+}
+
+/* Grupo de botones */
+.rol-opciones {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Botones estilo tarjeta */
+.rol-btn {
+  background: white;
+  padding: 12px 22px;
+  border-radius: 20px;
+  border: none;
+  font-size: 16px;
+  color: #3a0030;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  transition: 0.25s;
+}
+
+.rol-btn:hover {
+  background: #f4e8f0;
+  transform: translateY(-2px);
+}
+
+.rol-btn.selected {
+  background: #5a0037;
+  color: white;
+}
+
+.home-content {
+  width: 100%;
+  max-width: 1400px;   /* MISMO ANCHO QUE EL HERO */
+  margin: 0 auto;
+  padding: 0 40px;     /* MISMO PADDING LATERAL */
+}
+
+.profile-strip .home-content {
+  max-width: 1400px;     /* mismo que el hero */
+  width: 100%;
+}
+
+
+.rol-container {
+  background: white;
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+  margin-top: 50px;
+}
+
+/* --- NUEVO DISEÑO DE BOTONES ROLE --- */
+.role-strip {
+  width: 100%;
+  padding: 40px 60px;
+  background: transparent; /* SIN TARJETA */
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 20px; /* pegado al hero */
+}
+
+.role-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+}
+
+.role-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.role-btn {
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(90deg, #5a0037, #d32b4f); /* ESTILO DE LA SEGUNDA IMAGEN */
+  transition: 0.2s ease;
+}
+
+.role-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+/* elimina lo viejo */
+.profile-strip,
+.rol-container {
+  display: none;
+}
+
+.hero-audio {
+  border: none;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-audio:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+
+.audio-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 6px;
+}
+
+.header-btn-group,
+.hero-block,
+.hero-action-with-audio,
+.role-btn-with-audio,
+.card-title-block,
+.card-text-block,
+.card-btn-with-audio,
+.news-title-block,
+.news-tag-block,
+.news-meta-block,
+.footer-left-with-audio,
+.footer-link-with-audio,
+.role-title-block {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Fondo oscuro difuminado */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+}
+
+/* Tarjeta centrada */
+.modal-card {
+  background: #ffffff;
+  padding: 24px 30px;
+  border-radius: 20px;
+  max-width: 480px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  animation: fadeUp 0.25s ease-out;
+  text-align: center;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  } 
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.vf-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 18px 0;
+}
+
+.vf-buttons button {
+  background: var(--vino);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.vf-buttons button:hover {
+  filter: brightness(1.15);
+}
+
+/* Botón cerrar */
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--vino);
+  margin-top: 20px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  text-decoration: underline;
+}
+
+
+/* ================= MODAL ================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5000;
+}
+
+.modal-card {
+  background: white;
+  max-width: 480px;
+  width: 90%;
+  padding: 25px;
+  border-radius: 18px;
+  animation: fadeUp 0.25s ease-out;
+  text-align: center;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--vino);
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  text-decoration: underline;
+}
+
+.vf-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 15px;
+}
+
+.vf-buttons button {
+  background: var(--vino);
+  color: white;
+  padding: 10px 22px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.vf-buttons button:hover {
+  filter: brightness(1.15);
+}
+
+/* ========== NOTICIA EXPANDIDA ========== */
+.news-expanded {
+  margin-top: 10px;
+  padding: 14px;
+  background: #fdfdfd;
+  border-top: 1px solid #eee;
+  border-radius: 0 0 16px 16px;
+}

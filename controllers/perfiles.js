@@ -7,9 +7,9 @@ export const createPerfil = async (req, res) => {
   try {
     const datos = req.body;
 
-    if (!datos.curp || !datos.nombre) {
+    if (!datos.curp || !datos.nombre || !datos.tipo_usuario || !datos.tipo_persona) {
       return res.status(400).json({
-        error: 'Faltan datos obligatorios (CURP, Nombre)',
+        error: 'Faltan datos obligatorios (CURP, Nombre, Tipo de Usuario, Tipo de Persona)',
       });
     }
 
